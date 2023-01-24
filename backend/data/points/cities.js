@@ -1,5 +1,6 @@
 const cities = [
   {
+    id: 1,
     "type": "Feature",
     "properties": {
       "type": "city",
@@ -11,6 +12,7 @@ const cities = [
     }
   },
   {
+    id: 2,
     "type": "Feature",
     "properties": {
       "type": "city",

@@ -5,6 +5,8 @@ import ContextProvider from "./components/ContextProvider.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-      <App />
+  <ContextProvider>
+    <App />
+  </ContextProvider>
 );
 

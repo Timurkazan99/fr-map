@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {GeoJSON, FeatureGroup, Popup, useMap, Marker} from 'react-leaflet';
-import {fetchPoints} from "../http/pointsApi";
+import React from 'react';
+import {GeoJSON, FeatureGroup} from 'react-leaflet';
 import L from 'leaflet';
 import {URL} from "../utils/const";
-import {logDOM} from "@testing-library/react";
+import {useDispatch, useSelector} from "react-redux";
+import {selectors as pointSelectors} from "../store/reducers/PointSlice";
+import {actions as pointActions} from "../store/reducers/PointSlice";
+import {showSideBar} from "../store/reducers/UiSlice";
 
 L.Icon.Default.imagePath = `${URL}assets/img/`;
 
@@ -15,19 +17,20 @@ const myStyle= {
   dashArray: '8 5'
 }
 
-function onEachFeature(feature, layer){
-
-  layer.on({
-    click: () => console.log(feature.properties, layer)
-  });
-}
-
 const Points = () => {
-  const [points, setPoints] = useState([]);
+  const dispatch = useDispatch();
+  const points = useSelector(pointSelectors.selectAll);
 
-  useEffect(() => {
-    fetchPoints().then((res) => setPoints(res.features))
-  }, [])
+  function onEachFeature(feature, layer){
+
+    layer.on({
+      click: () => {
+        dispatch(pointActions.setActive(feature.id));
+        dispatch(showSideBar());
+        console.log(feature.properties, layer)
+      }
+    });
+  }
 
   return (
     <FeatureGroup>

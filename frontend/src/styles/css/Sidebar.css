@@ -6,4 +6,15 @@
  left: 20px;
  background: lightgrey;
  z-index: 9000;
+ padding: .25rem;
+}
+
+.sidebar-header {
+ display: flex;
+ justify-content: space-between;
+ margin-bottom: .5rem;
+}
+
+.sidebar-content {
+
 }

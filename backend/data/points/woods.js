@@ -1,5 +1,6 @@
 const woods = [
   {
+    id: 3,
     "type": "Feature",
     "properties": {
       "type": "wood",
