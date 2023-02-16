@@ -1,0 +1,29 @@
+.float-box {
+  position: relative;
+}
+.float-box input, .float-box textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  outline: none;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+.float-box input:not(:placeholder-shown) ~ span, .float-box input:focus ~ span, .float-box textarea:not(:placeholder-shown) ~ span, .float-box textarea:focus ~ span {
+  color: #000;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+}
+.float-box span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+/*# sourceMappingURL=FloatingLabel.css.map */

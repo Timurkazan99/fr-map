@@ -1,0 +1,12 @@
+.control-button {
+  position: absolute;
+  left: 40px;
+  top: 20px;
+  transition: 2s all ease;
+  z-index: 9000;
+}
+.control-button.active {
+  left: 340px;
+}
+
+/*# sourceMappingURL=ControlButton.css.map */

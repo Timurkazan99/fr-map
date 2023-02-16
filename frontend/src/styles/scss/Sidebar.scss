@@ -1,0 +1,31 @@
+.sidebar {
+ position: absolute;
+ width: 0;
+ height: calc(100% - 40px);
+ top: 20px;
+ left: 20px;
+ background: lightgrey;
+ z-index: 9000;
+ padding: .25rem;
+ visibility: hidden;
+ transform: translateX(-40px);
+ transition: 2s all ease;
+ overflow-x: hidden;
+
+ .sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+  width: 300px;
+ }
+
+ .sidebar-content {
+  width: 300px;
+ }
+
+ &.active {
+  transform: translateX(0);
+  visibility: visible;
+  width: 300px;
+ }
+}

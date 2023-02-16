@@ -1,0 +1,11 @@
+.control-button {
+  position: absolute;
+  left: 40px;
+  top: 20px;
+  transition: 2s all ease;
+  z-index: 9000;
+
+  &.active {
+    left: 340px;
+  }
+}

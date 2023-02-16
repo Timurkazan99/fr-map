@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import Map from "./components/Map.jsx";
+import MapContainer from "./components/MapContainer.jsx";
 import SideBar from "./components/SideBar.jsx";
 import {useDispatch} from "react-redux";
 import fetchPoints from "./store/thunks/fetchPoints";
+import ControlButton from "./components/ControlButton.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,8 +14,9 @@ function App() {
 
   return (
     <>
-      <SideBar/>
-      <Map />
+      <SideBar />
+      <ControlButton />
+      <MapContainer />
     </>
   );
 }

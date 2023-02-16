@@ -1,5 +1,5 @@
 import React from 'react';
-import {GeoJSON, FeatureGroup} from 'react-leaflet';
+import {GeoJSON, FeatureGroup, Popup} from 'react-leaflet';
 import L from 'leaflet';
 import {URL} from "../utils/const";
 import {useDispatch, useSelector} from "react-redux";
@@ -27,7 +27,6 @@ const Points = () => {
       click: () => {
         dispatch(pointActions.setActive(feature.id));
         dispatch(showSideBar());
-        console.log(feature.properties, layer)
       }
     });
   }
@@ -35,9 +34,16 @@ const Points = () => {
   return (
     <FeatureGroup>
       {points.map((f) => (
-        <GeoJSON key={f.properties.id} data={f} style={myStyle} onEachFeature={onEachFeature}>
+        <GeoJSON
+          key={f.properties.id}
+          data={f}
+          style={myStyle}
+          onEachFeature={onEachFeature}
+        >
+          <Popup show={true}>
+            {f.properties.name}
+          </Popup>
         </GeoJSON>
-
       ))}
     </FeatureGroup>
   );

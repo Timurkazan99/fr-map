@@ -7,6 +7,7 @@ const initialState = pointsAdapter.getInitialState({
   active: null,
   loading: null,
   error: null,
+  bounds: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]],
 });
 
 export const pointsSlice = createSlice({
@@ -19,6 +20,16 @@ export const pointsSlice = createSlice({
     setSelected: (state, action) => {
       state.selected = action.payload;
     },
+    setBounds: (state, action) => {
+      const [north, west, south, east ] = action.payload;
+      state.bounds = [
+        [west, north],
+        [east, north],
+        [east, south],
+        [west, south],
+        [west, north]
+      ]
+    }
   },
   extraReducers: (builder) => {
     builder
