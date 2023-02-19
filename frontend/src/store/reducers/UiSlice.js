@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {initPosition} from "../../utils/const";
 
 const initialState = {
-  sideBar: false,
+  sideBar: "",
   searchTerm: "",
   position: initPosition,
 };
@@ -12,11 +12,8 @@ export const UiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    showSideBar: (state) => {
-      state.sideBar = true;
-    },
-    hideSideBar: (state) => {
-      state.sideBar = false;
+    setSideBar: (state, {payload}) => {
+      state.sideBar = payload;
     },
     setSearchTerm: (state, {payload}) => {
       state.searchTerm = payload;
@@ -29,6 +26,6 @@ export const UiSlice = createSlice({
 /* eslint-enable no-param-reassign */
 
 export const {
-  showSideBar, hideSideBar, setSearchTerm, setPosition
+  setSideBar, setSearchTerm, setPosition
 } = UiSlice.actions;
 export const { reducer } = UiSlice;

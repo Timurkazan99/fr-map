@@ -1,11 +1,11 @@
 import React from 'react';
-import {GeoJSON, FeatureGroup, Popup} from 'react-leaflet';
+import { FeatureGroup, Popup, Marker} from 'react-leaflet';
 import L from 'leaflet';
 import {URL} from "../utils/const";
-import {useDispatch, useSelector} from "react-redux";
+import {batch, useDispatch, useSelector} from "react-redux";
 import {selectors as pointSelectors} from "../store/reducers/PointSlice";
 import {actions as pointActions} from "../store/reducers/PointSlice";
-import {showSideBar} from "../store/reducers/UiSlice";
+import {setSideBar} from "../store/reducers/UiSlice";
 
 L.Icon.Default.imagePath = `${URL}assets/img/`;
 
@@ -24,26 +24,31 @@ const Points = () => {
   function onEachFeature(feature, layer){
 
     layer.on({
-      click: () => {
-        dispatch(pointActions.setActive(feature.id));
-        dispatch(showSideBar());
+      click: (e) => {
+        console.log(e);
+        batch(() => {
+          dispatch(pointActions.setActive(feature.id));
+          dispatch(setSideBar("Info"));
+        });
       }
     });
   }
 
+
   return (
     <FeatureGroup>
       {points.map((f) => (
-        <GeoJSON
-          key={f.properties.id}
-          data={f}
+        <Marker
+          key={f.id}
+          position={f.geometry.coordinates}
           style={myStyle}
           onEachFeature={onEachFeature}
+          draggable={true}
         >
-          <Popup show={true}>
+          <Popup>
             {f.properties.name}
           </Popup>
-        </GeoJSON>
+        </Marker>
       ))}
     </FeatureGroup>
   );

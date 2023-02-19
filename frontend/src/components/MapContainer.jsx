@@ -2,8 +2,9 @@ import React from 'react';
 import {MapContainer as Container, TileLayer, ZoomControl} from "react-leaflet";
 import {initPosition, URL} from "../utils/const";
 import '../styles/css/Map.css';
-import Points from "./Points.jsx";
 import MapInit from "./MapInit.jsx";
+import MapEdit from "./MapEdit.jsx";
+import Points from "./Points.jsx";
 
 const MapContainer = () => {
   const mapDir = 'static/map/{z}/{x}/{y}.png';
@@ -30,7 +31,7 @@ const MapContainer = () => {
         continuousWorld = {false}
         noWrap = {true}
       />
-      <Points />
+      <MapEdit />
     </Container>
   );
 };

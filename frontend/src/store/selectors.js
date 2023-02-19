@@ -2,7 +2,7 @@ import {booleanIntersects, polygon} from '@turf/turf';
 import {selectors as pointSelector} from "./reducers/PointSlice";
 
 
-export const getSideBarShow = (state) => state.ui.sideBar;
+export const getSideBar = (state) => state.ui.sideBar;
 
 export const getSearchTerm = (state) => state.ui.searchTerm;
 

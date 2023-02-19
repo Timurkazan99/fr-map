@@ -1,20 +1,24 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../styles/scss/Sidebar.scss';
-import {getSideBarShow} from "../store/selectors";
+import {getSideBar} from "../store/selectors";
 import {useSelector} from "react-redux";
-import SearchInput from "./SearchInput.jsx";
 import SearchTab from "./SearchTab.jsx";
 import LocationInfo from "./LocationInfo.jsx";
+import EditLocation from "./EditLocation.jsx";
+
+const sideBarMap = {
+  Search: SearchTab,
+  Info: LocationInfo,
+  Edit: EditLocation,
+}
 
 const SideBar = () => {
-  const show = useSelector(getSideBarShow);
-  const [search, setSearch] = useState(true);
+  const show = useSelector(getSideBar);
+  const Component = show !== "" ? sideBarMap?.[show] : () => (<></>);
 
   return (
     <div className={show ? 'sidebar active' : 'sidebar'}>
-      {
-        search ? <><SearchInput /><SearchTab setSearch={setSearch}/></> : <LocationInfo setSearch={setSearch}/>
-      }
+      <Component />
     </div>
   );
 };

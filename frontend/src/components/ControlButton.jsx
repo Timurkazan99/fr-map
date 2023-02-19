@@ -1,18 +1,18 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getSideBarShow} from "../store/selectors";
+import {getSideBar} from "../store/selectors";
 import "../styles/scss/ControlButton.scss";
-import {hideSideBar, showSideBar} from "../store/reducers/UiSlice";
+import {setSideBar} from "../store/reducers/UiSlice";
 
 const ControlButton = () => {
 
   const dispatch = useDispatch();
-  const show = useSelector(getSideBarShow);
+  const show = useSelector(getSideBar);
   const clickHandler = () => {
-    if (show) {
-      dispatch(hideSideBar());
+    if (show === "") {
+      dispatch(setSideBar("Search"));
     } else {
-      dispatch(showSideBar());
+      dispatch(setSideBar(""));
     }
   }
 
