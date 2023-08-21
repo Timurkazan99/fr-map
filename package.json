@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/Timurkazan99/fr-map.git"
   },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
