@@ -66,14 +66,16 @@ module.exports = {
       //     name: '[name].[ext]'
       //   }
       // },
-      // {
-      //   // Images / icons
-      //   test: /\.(png|jpg|gif|svg)$/,
-      //   loader: 'file-loader',
-      //   options: {
-      //     name: '[name].[ext]'
-      //   }
-      // },
+      {
+        // Images / icons
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: `${PATHS.assets}img`,
+          publicPath: `${PATHS.src}\\${PATHS.assets}`,
+        }
+      },
       {
         // scss
         test: /\.scss$/,
@@ -112,12 +114,12 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
-      '@': `${PATHS.src}/js`, // Example: import Sort from "@/utils/sort.js"
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
+  //     '@': `${PATHS.src}/js`, // Example: import Sort from "@/utils/sort.js"
+  //   },
+  // },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env),
@@ -128,10 +130,10 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         // Images:
-        {
-          from: `${PATHS.src}/${PATHS.assets}img`,
-          to: `${PATHS.assets}img`
-        },
+        // {
+        //   from: `${PATHS.src}/${PATHS.assets}img`,
+        //   to: `${PATHS.assets}img`
+        // },
         // Fonts:
         // {
         //   from: `${PATHS.src}/${PATHS.assets}fonts`,

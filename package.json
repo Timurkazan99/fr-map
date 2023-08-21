@@ -4,7 +4,6 @@
   "description": "faerun map",
   "main": "index.js",
   "scripts": {
-    "prebuild": "npm i --prefix frontend && npm i --prefix backend",
     "build": "npm run build --prefix frontend",
     "start": "npm start --prefix backend"
   },
