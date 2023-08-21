@@ -6,7 +6,7 @@ const path = require('path');
 const errorHandler = require('./middleware/ErrorHandlingMiddleware');
 const apiRouter = require("./routes/ApiPoints");
 
-const staticDir = '../frontend/src/'
+const staticDir = '../frontend/build/'
 const PORT = process.env.PORT || 5000;
 
 const app = express();

@@ -6,7 +6,7 @@ import Points from "./Points.jsx";
 import MapInit from "./MapInit.jsx";
 
 const MapContainer = () => {
-  const mapDir = 'static/map/{z}/{x}/{y}.png';
+  const mapDir = 'map/{z}/{x}/{y}.png';
   const southWest = L.latLng(-62.10388252289787, -125.66796875);
   const northEast = L.latLng(66.72254132270653, 125.83203125000003);
   const bounds = L.latLngBounds(southWest, northEast);
